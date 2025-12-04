@@ -14,6 +14,10 @@ This project compares risk-based clustering strategies versus machine learning p
 - Aggressive clustering portfolio: **+84.03%** vs S&P 500: **+59.62%** (2021-2024)
 - Enhanced ML models (with cluster features) marginally improved over base models
 
+![Performance Comparison](results/figures/1_performance_comparison.png)
+*Figure 1: Portfolio performance comparison showing clustering strategies outperforming both ML-driven approaches and the S&P 500 benchmark*
+
+
 ## 🚀 Quick Start
 
 ### Prerequisites
