@@ -1,18 +1,27 @@
 # Notebooks Directory
 
-This directory contains Jupyter notebooks for exploratory data analysis and visualization.
+## Available Notebook
 
-## Available Notebooks
+### Roberto-Berardi-Portfolio-Clustering-Analysis.ipynb
 
-- `exploratory_analysis.ipynb` - Initial data exploration and visualization
+**Comprehensive step-by-step analysis** with:
+
+1. **Data Overview** - Dataset characteristics and features
+2. **Portfolio Strategies** - Conservative, Balanced, Aggressive explained
+3. **Clustering Results** - Detailed performance for each portfolio
+4. **ML Models** - All 4 models evaluated (Ridge, RF, XGBoost, NN)
+5. **ML Portfolio Results** - ML-driven strategy performance
+6. **Visual Analysis** - All 5 professional charts displayed
+7. **Statistical Summary** - Comprehensive metrics comparison
+8. **Key Findings** - Main insights and conclusions
 
 ## Usage
 ```bash
 jupyter notebook
 ```
 
-Then open the desired notebook.
+Then open `Roberto-Berardi-Portfolio-Clustering-Analysis.ipynb`
 
 ## Note
 
-The main analysis is performed by `main.py`. These notebooks are supplementary for exploration and visualization.
+This notebook displays results from running `main.py`. Make sure to run the main analysis first to generate the CSV tables and figures.
