@@ -1,0 +1,4 @@
+Portfolio,Total Return,CAGR,Sharpe,Max Drawdown,Volatility,Correlation,Info Ratio,Final Value
+Conservative,50.15,10.7,0.73,-18.08,12.1,0.09,-0.46,150150
+Balanced,60.63,12.58,0.81,-20.92,13.63,0.09,-0.41,160630
+Aggressive,80.86,15.97,0.85,-26.74,17.51,0.08,-0.3,180860
