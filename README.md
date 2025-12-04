@@ -47,26 +47,35 @@ python test_5stocks_complete.py
 
 ## 📁 Project Structure
 ```
-portfolio-clustering-project/
+Roberto-Berardi-portfolio-clustering-ml/
+├── README.md                   # Setup and usage instructions
+├── PROPOSAL.md                 # Project proposal
+├── AI_USAGE.md                 # AI tools usage documentation
+├── environment.yml             # Conda dependencies
+├── requirements.txt            # Pip dependencies
 ├── main.py                     # Main entry point (50-stock analysis)
 ├── test_5stocks_complete.py    # Quick test with 5 stocks
-├── PROPOSAL.md                 # Project proposal
-├── README.md                   # This file
-├── requirements.txt            # Python dependencies
-├── environment.yml             # Conda environment
 ├── src/                        # Source code modules
+│   ├── __init__.py
 │   ├── data_loader.py          # Stock data loading (yfinance)
 │   ├── feature_engineering.py  # Calculate 10 risk-return features
 │   ├── clustering.py           # K-means & GMM clustering
 │   ├── ml_models.py            # ML models (Ridge, RF, XGBoost, NN)
+│   ├── models.py               # Model definitions
+│   ├── evaluation.py           # Evaluation and visualization
 │   ├── portfolio.py            # Portfolio construction
 │   └── backtesting.py          # Performance evaluation
-├── data/                       # Cached stock data
-│   └── cache/                  # Downloaded stock prices
+├── data/
+│   └── raw/                    # Original stock data (cached)
 ├── results/                    # Output figures and tables
-└── notebooks/                  # Jupyter notebooks (optional)
+│   ├── figures/                # Visualizations
+│   ├── tables/                 # CSV results
+│   └── logs/                   # Analysis logs
+├── notebooks/                  # Jupyter notebooks
+└── tests/                      # Unit tests
+    ├── test_basic.py
+    └── run_all_tests.py
 ```
-
 ## 🔬 Methodology
 
 ### Data
