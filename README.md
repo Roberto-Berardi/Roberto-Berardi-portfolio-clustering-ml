@@ -181,31 +181,7 @@ Running `python main.py` will produce identical results.
 - **Data Source:** Yahoo Finance (yfinance)
 - **Optimization:** Pre-calculated features reused (20x speedup)
 
-## 📚 Citation
-```bibtex
-@misc{portfolio_clustering_2025,
-  author = {Roberto Berardi},
-  title = {Dynamic Portfolio Clustering and Risk Profiling with Machine Learning},
-  year = {2025},
-  institution = {HEC Lausanne},
-  course = {Advanced Programming}
-}
-```
 
-## 📄 License
-
-This project is created for academic purposes as part of the Advanced Programming course at HEC Lausanne.
-
-## 👤 Author
-
-**Roberto Berardi**  
-HEC Lausanne, Fall 2025  
-Course: Advanced Programming
-
-## 📧 Contact
-
-For questions about this project, contact: roberto.berardi@unil.ch
-
----
-
-*Last updated: December 2025*
+## Author
+**Roberto Berardi** — MSc Finance, HEC Lausanne  
+*Advanced Programming — Fall 2025*
