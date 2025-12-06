@@ -1,7 +1,25 @@
 # Roberto Berardi - Dynamic Portfolio Clustering and Risk Profiling with Machine Learning
 
 **Course:** Advanced Programming - HEC Lausanne, Fall 2025  
-**Student:** Roberto Berardi
+**Student:** Roberto Berardi (ID: 25419094)  
+**Email:** roberto.berardi@unil.ch
+
+---
+
+## 💡 Motivation
+
+**Does complexity lead to better investment performance?**
+
+This project challenges the assumption that better predictions automatically lead to better portfolios by comparing two approaches:
+
+1. **Clustering-Based Portfolios**: Group stocks by stable risk characteristics (volatility, correlation, drawdown)
+2. **ML-Driven Portfolios**: Predict future returns using Ridge, Random Forest, XGBoost, and Neural Networks
+
+**Research Question:** Can simple risk-based clustering outperform complex machine learning predictions for portfolio construction?
+
+**Key Finding:** Clustering-based portfolios outperformed ML by 3-10%, suggesting that stable structural patterns (risk profiles) are more actionable than noisy return forecasts in portfolio construction.
+
+---
 
 ## 📊 Project Overview
 
@@ -17,6 +35,7 @@ This project compares risk-based clustering strategies versus machine learning p
 ![Performance Comparison](results/figures/1_performance_comparison.png)
 *Figure 1: Portfolio performance comparison showing clustering strategies outperforming both ML-driven approaches and the S&P 500 benchmark*
 
+---
 
 ## 🚀 Quick Start
 
@@ -44,50 +63,45 @@ pip install -r requirements.txt
 python main.py
 ```
 
-**Quick test (5 stocks, ~1 minute):**
-```bash
-python test_5stocks_complete.py
-```
+---
 
 ## 📁 Project Structure
 ```
 Roberto-Berardi-portfolio-clustering-ml/
-├── README.md                   # Setup and usage instructions
+├── README.md                   # This file
 ├── PROPOSAL.md                 # Project proposal
 ├── AI_USAGE.md                 # AI tools usage documentation
+├── Roberto_Berardi_Report.pdf  # Full research report (12 pages)
 ├── environment.yml             # Conda dependencies
 ├── requirements.txt            # Pip dependencies
-├── main.py                     # Main entry point (50-stock analysis)
-├── test_5stocks_complete.py    # Quick test with 5 stocks
+├── main.py                     # Main entry point
 ├── src/                        # Source code modules
-│   ├── __init__.py
 │   ├── data_loader.py          # Stock data loading (yfinance)
 │   ├── feature_engineering.py  # Calculate 10 risk-return features
 │   ├── clustering.py           # K-means & GMM clustering
 │   ├── ml_models.py            # ML models (Ridge, RF, XGBoost, NN)
-│   ├── models.py               # Model definitions
-│   ├── evaluation.py           # Evaluation and visualization
 │   ├── portfolio.py            # Portfolio construction
-│   └── backtesting.py          # Performance evaluation
-├── data/
-│   └── raw/                    # Original stock data (cached)
-├── results/                    # Output figures and tables
-│   ├── figures/                # Visualizations
-│   ├── tables/                 # CSV results
-│   └── logs/                   # Analysis logs
-├── notebooks/                  # Jupyter notebooks
+│   ├── backtesting.py          # Performance evaluation
+│   └── evaluation.py           # Visualization & metrics
+├── data/raw/                   # Cached stock data
+├── results/                    # Generated outputs
+│   ├── figures/                # 5 PNG visualizations
+│   └── tables/                 # 3 CSV results tables
 └── tests/                      # Unit tests
-    ├── test_basic.py
-    └── run_all_tests.py
 ```
+
+---
+
 ## 🔬 Methodology
 
 ### Data
-- **50 U.S. large-cap stocks** (AAPL, MSFT, GOOGL, etc.)
+- **50 U.S. large-cap stocks** (AAPL, MSFT, GOOGL, AMZN, NVDA, etc.)
 - **Daily prices:** 2015-2024 (10 years)
-- **Benchmark:** S&P 500
+- **Training period:** 2015-2020 (6 years)
+- **Testing period:** 2021-2024 (4 years)
+- **Benchmark:** S&P 500 (SPY)
 
-### Features (10 risk-return metrics, rolling 12-month)
+### Features (10 risk-return metrics, rolling 12-month window)
 1. Annualized return
 2. Annualized volatility
 3. Sharpe ratio (2% risk-free rate)
@@ -120,6 +134,8 @@ Roberto-Berardi-portfolio-clustering-ml/
 - Transaction costs: 0.15% per trade
 - Initial capital: $100,000
 
+---
+
 ## 📊 Results Summary
 
 ### Clustering-Based Portfolios (2021-2024)
@@ -132,11 +148,11 @@ Roberto-Berardi-portfolio-clustering-ml/
 
 ### ML-Driven Portfolios (2021-2024)
 
-| Portfolio | Total Return | CAGR | Sharpe | Max Drawdown | Volatility | Info Ratio |
-|-----------|-------------|------|--------|--------------|------------|------------|
-| Conservative | 50.15% | 10.70% | 0.73 | -18.08% | 12.10% | -0.46 |
-| Balanced | 60.63% | 12.58% | 0.81 | -20.92% | 13.63% | -0.41 |
-| Aggressive | 80.86% | 15.97% | 0.85 | -26.74% | 17.51% | -0.30 |
+| Portfolio | Total Return | CAGR | Sharpe | Max Drawdown | vs S&P 500 |
+|-----------|-------------|------|--------|--------------|------------|
+| Conservative | 50.15% | 10.70% | 0.73 | -18.08% | -9.47% |
+| Balanced | 60.63% | 12.58% | 0.81 | -20.92% | +1.01% |
+| Aggressive | 80.86% | 15.97% | 0.85 | -26.74% | +21.24% |
 
 **S&P 500 Benchmark:** 59.62% total return, 12.40% CAGR, 0.63 Sharpe
 
@@ -155,6 +171,8 @@ Roberto-Berardi-portfolio-clustering-ml/
 
 **Best Model:** Ridge (Enhanced) with R² = -0.101
 
+---
+
 ## 🔑 Key Insights
 
 1. **Simpler is Better:** Risk-based clustering outperformed complex ML predictions
@@ -162,6 +180,8 @@ Roberto-Berardi-portfolio-clustering-ml/
 3. **Clusters Add Value:** Enhanced ML models slightly better than base versions
 4. **Stock Prediction is Hard:** Negative R² scores are normal (market noise)
 5. **Directional Accuracy Matters:** ~59% accuracy (better than random 50%)
+
+---
 
 ## ⚙️ Reproducibility
 
@@ -173,6 +193,8 @@ All results are fully reproducible:
 
 Running `python main.py` will produce identical results.
 
+---
+
 ## 🛠️ Technical Details
 
 - **Language:** Python 3.11
@@ -181,7 +203,21 @@ Running `python main.py` will produce identical results.
 - **Data Source:** Yahoo Finance (yfinance)
 - **Optimization:** Pre-calculated features reused (20x speedup)
 
+---
 
-## Author
-**Roberto Berardi** — MSc Finance, HEC Lausanne  
+## 📄 Full Report
+
+The complete research report (12 pages) is available: **[Roberto_Berardi_Report.pdf](Roberto_Berardi_Report.pdf)**
+
+---
+
+## 📧 Contact
+
+**Roberto Berardi**  
+MSc Finance, HEC Lausanne  
+📧 roberto.berardi@unil.ch  
+🎓 Student ID: 25419094
+
+---
+
 *Advanced Programming — Fall 2025*
