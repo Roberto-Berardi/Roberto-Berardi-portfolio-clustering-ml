@@ -54,3 +54,4 @@ data/*.xlsx
 # But keep the directories
 !data/.gitkeep
 !results/.gitkeep
+main
