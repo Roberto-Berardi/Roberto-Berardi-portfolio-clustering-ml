@@ -1,8 +1,7 @@
 # Roberto Berardi - Dynamic Portfolio Clustering and Risk Profiling with Machine Learning
 
 **Course:** Advanced Programming - MSc Finance, HEC Lausanne, Fall 2025  
-**Student:** Roberto Berardi  
-**Email:** roberto.berardi@unil.ch
+**Student:** Roberto Berardi
 
 ---
 
