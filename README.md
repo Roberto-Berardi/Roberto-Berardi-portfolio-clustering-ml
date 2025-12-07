@@ -206,7 +206,7 @@ Running `python main.py` will produce identical results.
 
 ## 📄 Full Report
 
-The complete research report (12 pages) is available: **[Roberto_Berardi_Report.pdf](Roberto_Berardi_Report.pdf)**
+The complete research report (12 pages) is available here: [Roberto_Berardi_Report.pdf](https://github.com/Roberto-Berardi/Roberto-Berardi-portfolio-clustering-ml/blob/main/Roberto_Berardi_Report.pdf)
 
 ---
 
