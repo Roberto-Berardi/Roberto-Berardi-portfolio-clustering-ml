@@ -190,6 +190,9 @@ def train_all_models(stock_features_dict, stock_data_dict, train_end_date='2020-
         # Remove NaN values - create numpy boolean mask for rows
         valid_idx_base = ~y_base.isna()
         mask = valid_idx_base.values  # Use .values instead of .to_numpy()
+        print(f"DEBUG: mask.shape={mask.shape}, mask.dtype={mask.dtype}")
+        print(f"DEBUG: X_base_scaled.shape={X_base_scaled.shape}")
+        print(f"DEBUG: mask has {mask.sum()} True values")
         X_base_clean = X_base_scaled[mask]  # This indexes ROWS (first dimension)
         y_base_clean = y_base.values[mask]  # Convert y to numpy too
         model_base.fit(X_base_clean, y_base_clean)
