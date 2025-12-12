@@ -166,10 +166,10 @@ def quarterly_rebalancing_backtest(portfolio, stock_data, stock_features_dict, b
         
         # Calculate current portfolio value
         # Calculate current portfolio value
-        current_value_total = sum(
+        current_value_total = float(sum(
             portfolio.holdings.get(ticker, 0) * current_prices.get(ticker, 0)
             for ticker in current_prices.keys()
-        )
+        ))
         
         # Convert to float to avoid Series issues
         if isinstance(current_value_total, pd.Series):
@@ -209,6 +209,7 @@ def quarterly_rebalancing_backtest(portfolio, stock_data, stock_features_dict, b
             'return': period_return
         })
         
+        current_value_total = float(current_value_total)
         print(f"      Cost: ${costs:.2f}, Value: ${current_value_total:,.2f}")
     
     # Final value at end date
@@ -507,10 +508,10 @@ def backtest_ml_portfolio(portfolio, stock_data, stock_features_dict, model, sca
         
         # Calculate current value
         # Calculate current value
-        current_value_total = sum(
+        current_value_total = float(sum(
             portfolio.holdings.get(ticker, 0) * current_prices.get(ticker, 0)
             for ticker in current_prices.keys()
-        )
+        ))
         
         # Convert to float to avoid Series issues
         if isinstance(current_value_total, pd.Series):
