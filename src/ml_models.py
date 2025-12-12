@@ -171,9 +171,8 @@ def train_all_models(stock_features_dict, stock_data_dict, train_end_date='2020-
         # Train BASE version
         print(f"    - Base version...", end=' ')
         model_base = deepcopy(model)
-        # Remove NaN values
+        # Remove NaN values and convert to numpy
         valid_idx_base = ~y_base.isna()
-        # Force proper indexing
         mask = valid_idx_base.to_numpy()
         X_base_clean = X_base_scaled[mask]
         y_base_clean = y_base[mask]
@@ -183,7 +182,7 @@ def train_all_models(stock_features_dict, stock_data_dict, train_end_date='2020-
         # Train ENHANCED version
         print(f"    - Enhanced version...", end=' ')
         model_enhanced = deepcopy(model)
-        # Remove NaN values
+        # Remove NaN values and convert to numpy
         valid_idx_enh = ~y_enhanced.isna()
         mask_enh = valid_idx_enh.to_numpy()
         X_enhanced_clean = X_enhanced_scaled[mask_enh]
