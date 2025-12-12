@@ -178,7 +178,7 @@ def quarterly_rebalancing_backtest(portfolio, stock_data, stock_features_dict, b
             current_value_total = float(current_value_total)
         
         if current_value_total == 0:
-            current_value_total = portfolio.current_value
+            current_value_total = float(portfolio.current_value)
         
         # Rebalance
         new_holdings = {}
@@ -519,7 +519,7 @@ def backtest_ml_portfolio(portfolio, stock_data, stock_features_dict, model, sca
             current_value_total = float(current_value_total)
         
         if current_value_total == 0:
-            current_value_total = portfolio.current_value
+            current_value_total = float(portfolio.current_value)
         
         # Rebalance
         new_holdings = {}
@@ -537,7 +537,7 @@ def backtest_ml_portfolio(portfolio, stock_data, stock_features_dict, model, sca
                 new_holdings[ticker] = target_shares
         
         portfolio.holdings = new_holdings
-        portfolio.current_value_total = current_value_total - costs
+        portfolio.current_value = current_value_total - costs
         total_transaction_costs += costs
         
         # Record values
