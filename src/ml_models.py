@@ -173,8 +173,10 @@ def train_all_models(stock_features_dict, stock_data_dict, train_end_date='2020-
         model_base = deepcopy(model)
         # Remove NaN values
         valid_idx_base = ~y_base.isna()
-        X_base_clean = X_base_scaled[valid_idx_base.values, :]
-        y_base_clean = y_base[valid_idx_base.values]
+        # Force proper indexing
+        mask = valid_idx_base.to_numpy()
+        X_base_clean = X_base_scaled[mask]
+        y_base_clean = y_base[mask]
         model_base.fit(X_base_clean, y_base_clean)
         print("✓")
         
@@ -183,8 +185,9 @@ def train_all_models(stock_features_dict, stock_data_dict, train_end_date='2020-
         model_enhanced = deepcopy(model)
         # Remove NaN values
         valid_idx_enh = ~y_enhanced.isna()
-        X_enhanced_clean = X_enhanced_scaled[valid_idx_enh.values, :]
-        y_enhanced_clean = y_enhanced[valid_idx_enh.values]
+        mask_enh = valid_idx_enh.to_numpy()
+        X_enhanced_clean = X_enhanced_scaled[mask_enh]
+        y_enhanced_clean = y_enhanced[mask_enh]
         model_enhanced.fit(X_enhanced_clean, y_enhanced_clean)
         print("✓")
         
