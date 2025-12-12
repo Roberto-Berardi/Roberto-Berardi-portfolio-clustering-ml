@@ -241,10 +241,18 @@ def quarterly_rebalancing_backtest(portfolio, stock_data, stock_features_dict, b
             last_date = available_dates[-1]
             final_prices[ticker] = data.loc[last_date, 'Close']
     
-    final_value = sum(
-        portfolio.holdings.get(ticker, 0) * final_prices.get(ticker, 0)
-        for ticker in final_prices.keys()
-    )
+    # Calculate final value (handle Series)
+    final_value = 0.0
+    for ticker in final_prices.keys():
+        shares = portfolio.holdings.get(ticker, 0)
+        price = final_prices.get(ticker, 0)
+        if hasattr(price, 'iloc'):
+            price = float(price.iloc[0]) if len(price) > 0 else 0.0
+        elif hasattr(price, 'item'):
+            price = float(price.item())
+        else:
+            price = float(price)
+        final_value += shares * price
     
     # Calculate performance metrics
     print(f"    Total rebalances: {len(rebalancing_dates) + 1}")
@@ -597,10 +605,18 @@ def backtest_ml_portfolio(portfolio, stock_data, stock_features_dict, model, sca
             last_date = available_dates[-1]
             final_prices[ticker] = data.loc[last_date, 'Close']
     
-    final_value = sum(
-        portfolio.holdings.get(ticker, 0) * final_prices.get(ticker, 0)
-        for ticker in final_prices.keys()
-    )
+    # Calculate final value (handle Series)
+    final_value = 0.0
+    for ticker in final_prices.keys():
+        shares = portfolio.holdings.get(ticker, 0)
+        price = final_prices.get(ticker, 0)
+        if hasattr(price, 'iloc'):
+            price = float(price.iloc[0]) if len(price) > 0 else 0.0
+        elif hasattr(price, 'item'):
+            price = float(price.item())
+        else:
+            price = float(price)
+        final_value += shares * price
     
     # Calculate performance metrics
     history_df = pd.DataFrame(portfolio_values).set_index('date')
