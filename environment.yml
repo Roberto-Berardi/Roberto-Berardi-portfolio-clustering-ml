@@ -1,4 +1,4 @@
-name: Roberto-Berardi-portfolio-clustering-ml
+name: portfolio-clustering-project
 channels:
   - defaults
   - conda-forge
@@ -12,4 +12,4 @@ dependencies:
   - pip
   - pip:
       - yfinance>=0.2.28
-      - xgboost>=2.0.0ls -la src/
+      - xgboost>=2.0.0
