@@ -227,6 +227,9 @@ def quarterly_rebalancing_backtest(portfolio, stock_data, stock_features_dict, b
         })
         
         current_value_total = float(current_value_total)
+        # Force both to float before printing
+        costs = float(costs) if not isinstance(costs, (int, float)) else costs
+        current_value_total = float(current_value_total) if not isinstance(current_value_total, (int, float)) else current_value_total
         print(f"      Cost: ${costs:.2f}, Value: ${current_value_total:,.2f}")
     
     # Final value at end date
