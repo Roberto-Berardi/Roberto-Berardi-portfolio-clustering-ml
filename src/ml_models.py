@@ -187,22 +187,22 @@ def train_all_models(stock_features_dict, stock_data_dict, train_end_date='2020-
         # Train BASE version
         print(f"    - Base version...", end=' ')
         model_base = deepcopy(model)
-        # Remove NaN values and convert to numpy
+        # Remove NaN values - create numpy boolean mask for rows
         valid_idx_base = ~y_base.isna()
-        mask = valid_idx_base.to_numpy()
-        X_base_clean = X_base_scaled[mask]
-        y_base_clean = y_base[mask]
+        mask = valid_idx_base.values  # Use .values instead of .to_numpy()
+        X_base_clean = X_base_scaled[mask]  # This indexes ROWS (first dimension)
+        y_base_clean = y_base.values[mask]  # Convert y to numpy too
         model_base.fit(X_base_clean, y_base_clean)
         print("✓")
         
         # Train ENHANCED version
         print(f"    - Enhanced version...", end=' ')
         model_enhanced = deepcopy(model)
-        # Remove NaN values and convert to numpy
+        # Remove NaN values - create numpy boolean mask for rows
         valid_idx_enh = ~y_enhanced.isna()
-        mask_enh = valid_idx_enh.to_numpy()
-        X_enhanced_clean = X_enhanced_scaled[mask_enh]
-        y_enhanced_clean = y_enhanced[mask_enh]
+        mask_enh = valid_idx_enh.values  # Use .values instead of .to_numpy()
+        X_enhanced_clean = X_enhanced_scaled[mask_enh]  # This indexes ROWS (first dimension)
+        y_enhanced_clean = y_enhanced.values[mask_enh]  # Convert y to numpy too
         model_enhanced.fit(X_enhanced_clean, y_enhanced_clean)
         print("✓")
         
