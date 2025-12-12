@@ -134,6 +134,10 @@ def train_all_models(stock_features_dict, stock_data_dict, train_end_date='2020-
     if X_base is None:
         raise ValueError("No valid training data available")
     
+    # Reset indices to avoid indexing issues
+    X_base = X_base.reset_index(drop=True)
+    y_base = y_base.reset_index(drop=True)
+    
     print(f"✓ Base training data: {len(X_base)} samples, {X_base.shape[1]} features")
     
     # Prepare ENHANCED model data (with clusters)
@@ -144,6 +148,10 @@ def train_all_models(stock_features_dict, stock_data_dict, train_end_date='2020-
     if X_enhanced is None:
         print("⚠️  Warning: No enhanced data, using base data only")
         X_enhanced, y_enhanced = X_base, y_base
+    
+    # Reset indices to avoid indexing issues
+    X_enhanced = X_enhanced.reset_index(drop=True)
+    y_enhanced = y_enhanced.reset_index(drop=True)
     
     print(f"✓ Enhanced training data: {len(X_enhanced)} samples, {X_enhanced.shape[1]} features")
     
