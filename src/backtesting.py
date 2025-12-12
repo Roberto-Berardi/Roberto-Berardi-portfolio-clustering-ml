@@ -195,11 +195,19 @@ def quarterly_rebalancing_backtest(portfolio, stock_data, stock_features_dict, b
         for ticker, weight in target_weights.items():
             if ticker in current_prices and weight > 0:
                 target_value = current_value_total * weight
-                target_shares = target_value / current_prices[ticker]
+                # Extract scalar price
+                price_value = current_prices[ticker]
+                if hasattr(price_value, "iloc"):
+                    price_value = float(price_value.iloc[0])
+                elif hasattr(price_value, "item"):
+                    price_value = float(price_value.item())
+                else:
+                    price_value = float(price_value)
+                target_shares = target_value / price_value
                 
                 old_shares = portfolio.holdings.get(ticker, 0)
                 shares_diff = abs(target_shares - old_shares)
-                trade_value = shares_diff * current_prices[ticker]
+                trade_value = shares_diff * price_value
                 costs += trade_value * transaction_cost_rate
                 
                 new_holdings[ticker] = target_shares
@@ -546,11 +554,19 @@ def backtest_ml_portfolio(portfolio, stock_data, stock_features_dict, model, sca
         for ticker, weight in target_weights.items():
             if ticker in current_prices and weight > 0:
                 target_value = current_value_total * weight
-                target_shares = target_value / current_prices[ticker]
+                # Extract scalar price
+                price_value = current_prices[ticker]
+                if hasattr(price_value, "iloc"):
+                    price_value = float(price_value.iloc[0])
+                elif hasattr(price_value, "item"):
+                    price_value = float(price_value.item())
+                else:
+                    price_value = float(price_value)
+                target_shares = target_value / price_value
                 
                 old_shares = portfolio.holdings.get(ticker, 0)
                 shares_diff = abs(target_shares - old_shares)
-                trade_value = shares_diff * current_prices[ticker]
+                trade_value = shares_diff * price_value
                 costs += trade_value * transaction_cost_rate
                 
                 new_holdings[ticker] = target_shares
