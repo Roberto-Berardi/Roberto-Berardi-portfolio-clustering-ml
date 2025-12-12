@@ -134,12 +134,16 @@ def train_all_models(stock_features_dict, stock_data_dict, train_end_date='2020-
     if X_base is None:
         raise ValueError("No valid training data available")
     
-    # Reset indices to avoid indexing issues
+    # Reset indices and ensure y is 1D Series
     X_base = X_base.reset_index(drop=True)
+    if isinstance(y_base, pd.DataFrame):
+        y_base = y_base.iloc[:, 0]  # Take first column as Series
     y_base = y_base.reset_index(drop=True)
     
-    # Reset indices to avoid indexing issues
+    # Reset indices and ensure y is 1D Series
     X_base = X_base.reset_index(drop=True)
+    if isinstance(y_base, pd.DataFrame):
+        y_base = y_base.iloc[:, 0]  # Take first column as Series
     y_base = y_base.reset_index(drop=True)
     
     print(f"✓ Base training data: {len(X_base)} samples, {X_base.shape[1]} features")
@@ -153,12 +157,16 @@ def train_all_models(stock_features_dict, stock_data_dict, train_end_date='2020-
         print("⚠️  Warning: No enhanced data, using base data only")
         X_enhanced, y_enhanced = X_base, y_base
     
-    # Reset indices to avoid indexing issues
+    # Reset indices and ensure y is 1D Series
     X_enhanced = X_enhanced.reset_index(drop=True)
+    if isinstance(y_enhanced, pd.DataFrame):
+        y_enhanced = y_enhanced.iloc[:, 0]  # Take first column as Series
     y_enhanced = y_enhanced.reset_index(drop=True)
     
-    # Reset indices to avoid indexing issues
+    # Reset indices and ensure y is 1D Series
     X_enhanced = X_enhanced.reset_index(drop=True)
+    if isinstance(y_enhanced, pd.DataFrame):
+        y_enhanced = y_enhanced.iloc[:, 0]  # Take first column as Series
     y_enhanced = y_enhanced.reset_index(drop=True)
     
     print(f"✓ Enhanced training data: {len(X_enhanced)} samples, {X_enhanced.shape[1]} features")
@@ -190,12 +198,6 @@ def train_all_models(stock_features_dict, stock_data_dict, train_end_date='2020-
         # Remove NaN values - create numpy boolean mask for rows
         valid_idx_base = ~y_base.isna()
         mask = valid_idx_base.values  # Use .values instead of .to_numpy()
-        print(f"DEBUG: mask.shape={mask.shape}, mask.dtype={mask.dtype}")
-        print(f"DEBUG: X_base_scaled.shape={X_base_scaled.shape}")
-        print(f"DEBUG: mask has {mask.sum()} True values")
-        print(f"DEBUG: mask.shape={mask.shape}, mask.dtype={mask.dtype}")
-        print(f"DEBUG: X_base_scaled.shape={X_base_scaled.shape}")
-        print(f"DEBUG: mask has {mask.sum()} True values")
         X_base_clean = X_base_scaled[mask]  # This indexes ROWS (first dimension)
         y_base_clean = y_base.values[mask]  # Convert y to numpy too
         model_base.fit(X_base_clean, y_base_clean)
