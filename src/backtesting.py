@@ -166,10 +166,19 @@ def quarterly_rebalancing_backtest(portfolio, stock_data, stock_features_dict, b
         
         # Calculate current portfolio value
         # Calculate current portfolio value
-        current_value_total = float(sum(
-            portfolio.holdings.get(ticker, 0) * current_prices.get(ticker, 0)
-            for ticker in current_prices.keys()
-        ))
+        # Calculate current portfolio value (handle Series values)
+        current_value_total = 0.0
+        for ticker in current_prices.keys():
+            shares = portfolio.holdings.get(ticker, 0)
+            price = current_prices.get(ticker, 0)
+            # Convert price to scalar if it's a Series
+            if hasattr(price, 'iloc'):
+                price = float(price.iloc[0]) if len(price) > 0 else 0.0
+            elif hasattr(price, 'item'):
+                price = float(price.item())
+            else:
+                price = float(price)
+            current_value_total += shares * price
         
         # Convert to float to avoid Series issues
         if isinstance(current_value_total, pd.Series):
@@ -508,10 +517,19 @@ def backtest_ml_portfolio(portfolio, stock_data, stock_features_dict, model, sca
         
         # Calculate current value
         # Calculate current value
-        current_value_total = float(sum(
-            portfolio.holdings.get(ticker, 0) * current_prices.get(ticker, 0)
-            for ticker in current_prices.keys()
-        ))
+        # Calculate current portfolio value (handle Series values)
+        current_value_total = 0.0
+        for ticker in current_prices.keys():
+            shares = portfolio.holdings.get(ticker, 0)
+            price = current_prices.get(ticker, 0)
+            # Convert price to scalar if it's a Series
+            if hasattr(price, 'iloc'):
+                price = float(price.iloc[0]) if len(price) > 0 else 0.0
+            elif hasattr(price, 'item'):
+                price = float(price.item())
+            else:
+                price = float(price)
+            current_value_total += shares * price
         
         # Convert to float to avoid Series issues
         if isinstance(current_value_total, pd.Series):
