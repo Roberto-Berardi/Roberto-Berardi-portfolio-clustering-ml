@@ -275,13 +275,17 @@ def evaluate_models(ml_models, stock_features_dict, stock_data_dict, test_start_
             y_pred = model.predict(X_test_scaled)
             
             # Calculate metrics
-            r2 = r2_score(y_test, y_pred)
-            mse = mean_squared_error(y_test, y_pred)
+            # Filter NaN values before calculating metrics
+            valid_mask = ~(pd.isna(y_test) | pd.isna(y_pred))
+            y_test_clean = np.array(y_test)[valid_mask]
+            y_pred_clean = np.array(y_pred)[valid_mask]
+            
+            r2 = r2_score(y_test_clean, y_pred_clean)
+            mse = mean_squared_error(y_test_clean, y_pred_clean)
+            
             
             # Directional accuracy
-            y_test_direction = (y_test > 0).astype(int)
-            y_pred_direction = (y_pred > 0).astype(int)
-            directional_accuracy = (y_test_direction == y_pred_direction).mean()
+            directional_accuracy = (np.sign(y_test_clean) == np.sign(y_pred_clean)).mean()
             
             results.append({
                 'Model': model_name,
