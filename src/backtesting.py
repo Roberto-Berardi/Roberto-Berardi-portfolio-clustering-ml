@@ -170,7 +170,7 @@ def quarterly_rebalancing_backtest(portfolio, stock_data, stock_features_dict, b
             for ticker in current_prices.keys()
         )
         
-        if current_value == 0:
+        if current_value.sum() == 0:
             current_value = portfolio.current_value
         
         # Rebalance
@@ -504,7 +504,7 @@ def backtest_ml_portfolio(portfolio, stock_data, stock_features_dict, model, sca
             for ticker in current_prices.keys()
         )
         
-        if current_value == 0:
+        if current_value.sum() == 0:
             current_value = portfolio.current_value
         
         # Rebalance
