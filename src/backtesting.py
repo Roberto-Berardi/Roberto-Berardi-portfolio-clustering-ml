@@ -165,20 +165,27 @@ def quarterly_rebalancing_backtest(portfolio, stock_data, stock_features_dict, b
                 current_prices[ticker] = data.loc[last_date, 'Close']
         
         # Calculate current portfolio value
-        current_value = sum(
+        # Calculate current portfolio value
+        current_value_total = sum(
             portfolio.holdings.get(ticker, 0) * current_prices.get(ticker, 0)
             for ticker in current_prices.keys()
         )
         
-        if current_value.sum() == 0:
-            current_value = portfolio.current_value
+        # Convert to float to avoid Series issues
+        if isinstance(current_value_total, pd.Series):
+            current_value_total = float(current_value_total.sum())
+        elif not isinstance(current_value_total, (int, float)):
+            current_value_total = float(current_value_total)
+        
+        if current_value_total == 0:
+            current_value_total = portfolio.current_value
         
         # Rebalance
         new_holdings = {}
         costs = 0
         for ticker, weight in target_weights.items():
             if ticker in current_prices and weight > 0:
-                target_value = current_value * weight
+                target_value = current_value_total * weight
                 target_shares = target_value / current_prices[ticker]
                 
                 old_shares = portfolio.holdings.get(ticker, 0)
@@ -189,20 +196,20 @@ def quarterly_rebalancing_backtest(portfolio, stock_data, stock_features_dict, b
                 new_holdings[ticker] = target_shares
         
         portfolio.holdings = new_holdings
-        portfolio.current_value = current_value - costs
+        portfolio.current_value = current_value_total - costs
         total_transaction_costs += costs
         
         # Calculate return
         prev_value = portfolio_values[-1]['value']
-        period_return = (current_value / prev_value) - 1 if prev_value > 0 else 0
+        period_return = (current_value_total / prev_value) - 1 if prev_value > 0 else 0
         
         portfolio_values.append({
             'date': rebal_date,
-            'value': current_value,
+            'value': current_value_total,
             'return': period_return
         })
         
-        print(f"      Cost: ${costs:.2f}, Value: ${current_value:,.2f}")
+        print(f"      Cost: ${costs:.2f}, Value: ${current_value_total:,.2f}")
     
     # Final value at end date
     final_date = pd.Timestamp(end_date)
@@ -499,20 +506,27 @@ def backtest_ml_portfolio(portfolio, stock_data, stock_features_dict, model, sca
                 current_prices[ticker] = data.loc[last_date, 'Close']
         
         # Calculate current value
-        current_value = sum(
+        # Calculate current value
+        current_value_total = sum(
             portfolio.holdings.get(ticker, 0) * current_prices.get(ticker, 0)
             for ticker in current_prices.keys()
         )
         
-        if current_value.sum() == 0:
-            current_value = portfolio.current_value
+        # Convert to float to avoid Series issues
+        if isinstance(current_value_total, pd.Series):
+            current_value_total = float(current_value_total.sum())
+        elif not isinstance(current_value_total, (int, float)):
+            current_value_total = float(current_value_total)
+        
+        if current_value_total == 0:
+            current_value_total = portfolio.current_value
         
         # Rebalance
         new_holdings = {}
         costs = 0
         for ticker, weight in target_weights.items():
             if ticker in current_prices and weight > 0:
-                target_value = current_value * weight
+                target_value = current_value_total * weight
                 target_shares = target_value / current_prices[ticker]
                 
                 old_shares = portfolio.holdings.get(ticker, 0)
@@ -523,16 +537,16 @@ def backtest_ml_portfolio(portfolio, stock_data, stock_features_dict, model, sca
                 new_holdings[ticker] = target_shares
         
         portfolio.holdings = new_holdings
-        portfolio.current_value = current_value - costs
+        portfolio.current_value_total = current_value_total - costs
         total_transaction_costs += costs
         
         # Record values
         prev_value = portfolio_values[-1]['value']
-        period_return = (current_value / prev_value) - 1 if prev_value > 0 else 0
+        period_return = (current_value_total / prev_value) - 1 if prev_value > 0 else 0
         
         portfolio_values.append({
             'date': rebal_date,
-            'value': current_value,
+            'value': current_value_total,
             'return': period_return
         })
     
