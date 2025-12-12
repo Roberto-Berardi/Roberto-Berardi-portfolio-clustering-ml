@@ -171,13 +171,21 @@ def train_all_models(stock_features_dict, stock_data_dict, train_end_date='2020-
         # Train BASE version
         print(f"    - Base version...", end=' ')
         model_base = deepcopy(model)
-        model_base.fit(X_base_scaled, y_base)
+        # Remove NaN values
+    valid_idx_base = ~y_base.isna()
+    X_base_clean = X_base_scaled[valid_idx_base]
+    y_base_clean = y_base[valid_idx_base]
+    model_base.fit(X_base_clean, y_base_clean)
         print("✓")
         
         # Train ENHANCED version
         print(f"    - Enhanced version...", end=' ')
         model_enhanced = deepcopy(model)
-        model_enhanced.fit(X_enhanced_scaled, y_enhanced)
+        # Remove NaN values
+    valid_idx_enh = ~y_enhanced.isna()
+    X_enhanced_clean = X_enhanced_scaled[valid_idx_enh]
+    y_enhanced_clean = y_enhanced[valid_idx_enh]
+    model_enhanced.fit(X_enhanced_clean, y_enhanced_clean)
         print("✓")
         
         results[name] = {
