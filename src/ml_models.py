@@ -257,14 +257,22 @@ def evaluate_models(ml_models, stock_features_dict, stock_data_dict, test_start_
             include_clusters = (version == 'enhanced' and 'cluster' in feature_cols)
             X_test, y_test = prepare_ml_data(stock_features_dict, stock_data_dict,
                                              end_date=None, include_clusters=include_clusters)
+
+            # Ensure y_test is 1D Series
+            if isinstance(y_test, pd.DataFrame):
+                y_test = y_test.iloc[:, 0]
             
             if X_test is None:
                 print("No test data!")
                 continue
             
-            # Filter to test period
+            # Filter to test period BEFORE resetting index
             X_test = X_test[X_test.index >= test_start_date]
             y_test = y_test[y_test.index >= test_start_date]
+            
+            # Now reset indices
+            y_test = y_test.reset_index(drop=True)
+            X_test = X_test.reset_index(drop=True)
             
             if len(X_test) == 0:
                 print("No test samples!")
