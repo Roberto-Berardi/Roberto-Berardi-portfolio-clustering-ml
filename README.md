@@ -174,11 +174,7 @@ Roberto-Berardi-portfolio-clustering-ml/
 
 ## Key Insights
 
-1. **Simpler is Better:** Risk-based clustering outperformed complex ML predictions
-2. **Both Beat Market:** All strategies exceeded S&P 500 returns
-3. **Clusters Add Value:** Enhanced ML models slightly better than base versions
-4. **Stock Prediction is Hard:** Negative R² scores are normal (market noise)
-5. **Directional Accuracy Matters:** ~59% accuracy (better than random 50%)
+The results demonstrate that risk-based clustering consistently outperformed complex ML predictions across all portfolio strategies, with clustering portfolios achieving 10-17% higher returns than their ML-driven counterparts. Both approaches exceeded S&P 500 benchmark returns, with the aggressive clustering portfolio delivering 84.68% total returns versus 59.62% for the benchmark. The enhanced ML models, which incorporated cluster features, showed marginal improvements over base versions, suggesting that structural risk patterns provide some value even within predictive frameworks. However, all ML models exhibited negative R² scores, reflecting the fundamental challenge of forecasting stock returns in noisy markets. Despite poor predictive accuracy, the models achieved approximately 59% directional accuracy, meaningfully above the 50% random threshold, indicating they captured some signal amidst market noise.
 
 ---
 
