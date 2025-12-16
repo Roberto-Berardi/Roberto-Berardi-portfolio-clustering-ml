@@ -1,6 +1,5 @@
 # Dynamic Portfolio Clustering and Risk Profiling with Machine Learning
 
-
 ## Research Question
 
 Can risk-based clustering strategies outperform machine learning predictions for portfolio construction? This project compares simple clustering methods (K-means, GMM) against complex ML models (Ridge, Random Forest, XGBoost, Neural Network) for building investment portfolios.
