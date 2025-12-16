@@ -76,7 +76,3 @@ The results will provide insights into when simpler, interpretable methods (clus
 - **Key Libraries:** pandas, numpy, scikit-learn, xgboost, yfinance
 - **Initial Capital:** $100,000
 - **Reproducibility:** Fixed random seeds throughout
-
----
-
-**Word Count:** 490 words
