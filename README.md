@@ -100,21 +100,41 @@ Roberto-Berardi-portfolio-clustering-ml/
 - **Testing period:** 2021-2024 (4 years)
 - **Benchmark:** S&P 500 (SPY)
 
-### Features (10 risk-return metrics, rolling 12-month window)
-1. Annualized return
-2. Annualized volatility
-3. Sharpe ratio (2% risk-free rate)
-4. Maximum drawdown
-5. Beta (market sensitivity)
-6. Correlation with S&P 500
-7-10. Momentum (1m, 3m, 6m, 12m)
+### Features
 
+Ten risk-return metrics were calculated for each stock using a rolling 12-month window to capture evolving market dynamics:
+
+**Risk Metrics:**
+- Annualized volatility (standard deviation of daily returns)
+- Maximum drawdown (peak-to-trough decline)
+- Beta (sensitivity to S&P 500 movements)
+- Correlation with S&P 500
+
+**Return Metrics:**
+- Annualized return (geometric mean)
+- Sharpe ratio (risk-adjusted return with 2% risk-free rate)
+
+**Momentum Indicators:**
+- 1-month, 3-month, 6-month, and 12-month trailing returns
+
+All features are standardized before clustering to ensure equal weighting across different scales.
 ### Clustering Approach
-- **PCA:** Dimensionality reduction (3 components, 96.7% variance)
-- **K-means:** Partition stocks into 3 clusters
-- **GMM:** Probabilistic clustering
-- **Labels:** low-volatility, moderate, high-volatility
 
+Unsupervised learning techniques were applied to group stocks by risk-return characteristics:
+
+**Dimensionality Reduction:**
+- Principal Component Analysis (PCA) reduces the 10 features to 3 principal components
+- Retained components explain 96.7% of total variance
+- Reduces noise while preserving essential risk-return patterns
+
+**Clustering Algorithms:**
+- **K-means clustering:** Hard assignment, partitions stocks into 3 distinct clusters
+- **Gaussian Mixture Models (GMM):** Soft assignment, probabilistic cluster membership
+- Both algorithms evaluated using silhouette scores (K-means: 0.363, GMM: 0.366)
+
+**Cluster Interpretation:**
+- Clusters labeled by average volatility: low-volatility, moderate-volatility, high-volatility
+- Labels enable intuitive portfolio construction aligned with investor risk preferences
 ### ML Approach
 
 Four machine learning models were trained to predict 3-month forward stock returns, each implemented in two versions to assess the value of cluster information:
