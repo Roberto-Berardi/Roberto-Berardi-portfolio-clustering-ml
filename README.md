@@ -5,7 +5,7 @@
 
 ---
 
-## 💡 Motivation
+## Motivation
 
 **Does complexity lead to better investment performance?**
 
@@ -20,11 +20,11 @@ This project challenges the assumption that better predictions automatically lea
 
 ---
 
-## 📊 Project Overview
+## Project Overview
 
 This project compares risk-based clustering strategies versus machine learning predictions for portfolio construction. Using 50 U.S. stocks from 2015-2024, we evaluate whether simple clustering (K-means, GMM) can outperform complex ML models (Ridge, Random Forest, XGBoost, Neural Network) for building investment portfolios.
 
-## 🎯 Key Findings
+## Key Findings
 
 - **Clustering-based portfolios outperformed ML-driven portfolios by 3-10%**
 - **Both strategies beat S&P 500 benchmark by 10-24%**
@@ -36,7 +36,7 @@ This project compares risk-based clustering strategies versus machine learning p
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.10+
@@ -64,34 +64,34 @@ python main.py
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 ```
 Roberto-Berardi-portfolio-clustering-ml/
-├── README.md                   # This file
-├── PROPOSAL.md                 # Project proposal
-├── AI_USAGE.md                 # AI tools usage documentation
-├── Roberto_Berardi_Report.pdf  # Full research report (12 pages)
-├── environment.yml             # Conda dependencies
-├── requirements.txt            # Pip dependencies
-├── main.py                     # Main entry point
-├── src/                        # Source code modules
-│   ├── data_loader.py          # Stock data loading (yfinance)
-│   ├── feature_engineering.py  # Calculate 10 risk-return features
-│   ├── clustering.py           # K-means & GMM clustering
-│   ├── ml_models.py            # ML models (Ridge, RF, XGBoost, NN)
-│   ├── portfolio.py            # Portfolio construction
-│   ├── backtesting.py          # Performance evaluation
-│   └── evaluation.py           # Visualization & metrics
-├── data/raw/                   # Cached stock data
-├── results/                    # Generated outputs
-│   ├── figures/                # 5 PNG visualizations
-│   └── tables/                 # 3 CSV results tables
-└── tests/                      # Unit tests
+ README.md                   # This file
+ PROPOSAL.md                 # Project proposal
+ AI_USAGE.md                 # AI tools usage documentation
+ Roberto_Berardi_Report.pdf  # Full research report (12 pages)
+ environment.yml             # Conda dependencies
+ requirements.txt            # Pip dependencies
+ main.py                     # Main entry point
+ src/                        # Source code modules
+    data_loader.py          # Stock data loading (yfinance)
+    feature_engineering.py  # Calculate 10 risk-return features
+    clustering.py           # K-means & GMM clustering
+    ml_models.py            # ML models (Ridge, RF, XGBoost, NN)
+    portfolio.py            # Portfolio construction
+    backtesting.py          # Performance evaluation
+    evaluation.py           # Visualization & metrics
+ data/raw/                   # Cached stock data
+ results/                    # Generated outputs
+    figures/                # 5 PNG visualizations
+    tables/                 # 3 CSV results tables
+ tests/                      # Unit tests
 ```
 
 ---
 
-## 🔬 Methodology
+## Methodology
 
 ### Data
 - **50 U.S. large-cap stocks** (AAPL, MSFT, GOOGL, AMZN, NVDA, etc.)
@@ -135,7 +135,7 @@ Roberto-Berardi-portfolio-clustering-ml/
 
 ---
 
-## 📊 Results Summary
+## Results Summary
 
 ### Clustering-Based Portfolios (2021-2024)
 
@@ -172,7 +172,7 @@ Roberto-Berardi-portfolio-clustering-ml/
 
 ---
 
-## 🔑 Key Insights
+## Key Insights
 
 1. **Simpler is Better:** Risk-based clustering outperformed complex ML predictions
 2. **Both Beat Market:** All strategies exceeded S&P 500 returns
@@ -182,7 +182,7 @@ Roberto-Berardi-portfolio-clustering-ml/
 
 ---
 
-## ⚙️ Reproducibility
+## Reproducibility
 
 All results are fully reproducible:
 - Random seed: `random_state=42` everywhere
@@ -194,7 +194,7 @@ Running `python main.py` will produce identical results.
 
 ---
 
-## 🛠️ Technical Details
+## Technical Details
 
 - **Language:** Python 3.11
 - **Key Libraries:** pandas, numpy, scikit-learn, xgboost, yfinance
@@ -204,7 +204,7 @@ Running `python main.py` will produce identical results.
 
 ---
 
-## 📄 Full Report
+## Full Report
 
 The complete research report (12 pages) is available here: [Roberto_Berardi_Report.pdf](https://github.com/Roberto-Berardi/Roberto-Berardi-portfolio-clustering-ml/blob/main/Roberto_Berardi_Report.pdf)
 
