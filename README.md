@@ -116,11 +116,23 @@ Roberto-Berardi-portfolio-clustering-ml/
 - **Labels:** low-volatility, moderate, high-volatility
 
 ### ML Approach
-- **4 Models:** Ridge, Random Forest, XGBoost, Neural Network
-- **Two Versions:** Base (10 features) vs Enhanced (+cluster feature)
-- **Target:** Predict 3-month forward returns
-- **Training:** 2015-2020 (6 years)
-- **Testing:** 2021-2024 (4 years)
+
+Four machine learning models were trained to predict 3-month forward stock returns, each implemented in two versions to assess the value of cluster information:
+
+**Models:**
+- Ridge regression (linear baseline)
+- Random Forest (ensemble tree-based)
+- XGBoost (gradient boosting)
+- Neural Network (multi-layer perceptron with two hidden layers)
+
+**Feature Sets:**
+- **Base version:** 10 fundamental features including returns, volatility, Sharpe ratio, maximum drawdown, beta, correlation, and 4 momentum indicators (1m, 3m, 6m, 12m)
+- **Enhanced version:** Base features plus cluster membership (encoded as 0, 1, 2 for low/moderate/high volatility)
+
+**Training & Evaluation:**
+- Training period: 2015-2020 (6 years, ~63,000 samples)
+- Testing period: 2021-2024 (4 years, ~50,000 samples)
+- Evaluation metrics: R² score, mean squared error, directional accuracy
 
 ### Portfolio Construction
 Three risk-targeted portfolios were constructed based on cluster allocations, each designed to match distinct investor risk preferences. All portfolios use equal weighting within each cluster and rebalance quarterly (2021-2024) to adapt to changing market conditions. Transaction costs of 0.15% per trade and initial capital of $100,000 are applied to reflect realistic trading conditions.
