@@ -123,15 +123,13 @@ Roberto-Berardi-portfolio-clustering-ml/
 - **Testing:** 2021-2024 (4 years)
 
 ### Portfolio Construction
-**Three strategies:**
-- **Conservative:** 60% low-vol / 30% moderate / 10% high-vol
-- **Balanced:** 40% low-vol / 40% moderate / 20% high-vol
-- **Aggressive:** 20% low-vol / 30% moderate / 50% high-vol
+Three risk-targeted portfolios were constructed based on cluster allocations, each designed to match distinct investor risk preferences. All portfolios use equal weighting within each cluster and rebalance quarterly (2021-2024) to adapt to changing market conditions. Transaction costs of 0.15% per trade and initial capital of $100,000 are applied to reflect realistic trading conditions.
 
-**Backtesting:**
-- Quarterly rebalancing (2021-2024)
-- Transaction costs: 0.15% per trade
-- Initial capital: $100,000
+- **Conservative:** 60% low-volatility / 30% moderate-volatility / 10% high-volatility stocks. This allocation prioritizes capital preservation and stability, heavily weighting defensive stocks while maintaining limited exposure to growth opportunities.
+
+- **Balanced:** 40% low-volatility / 40% moderate-volatility / 20% high-volatility stocks. This strategy balances risk and return by distributing weights relatively evenly across risk levels, suitable for investors seeking moderate growth with controlled volatility.
+
+- **Aggressive:** 20% low-volatility / 30% moderate-volatility / 50% high-volatility stocks. This portfolio tilts heavily toward high-volatility stocks to maximize return potential, accepting greater drawdowns and volatility in pursuit of superior long-term performance.
 
 ---
 
