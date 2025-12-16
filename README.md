@@ -131,6 +131,11 @@ Three risk-targeted portfolios were constructed based on cluster allocations, ea
 
 - **Aggressive:** 20% low-volatility / 30% moderate-volatility / 50% high-volatility stocks. This portfolio tilts heavily toward high-volatility stocks to maximize return potential, accepting greater drawdowns and volatility in pursuit of superior long-term performance.
 
+**Backtesting:**
+- Quarterly rebalancing (2021-2024)
+- Transaction costs: 0.15% per trade
+- Initial capital: $100,000
+
 ---
 
 ## Results Summary
