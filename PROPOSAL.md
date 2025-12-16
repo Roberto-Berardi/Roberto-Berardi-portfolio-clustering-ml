@@ -1,10 +1,5 @@
 # Dynamic Portfolio Clustering and Risk Profiling with Machine Learning
 
-**Student:** Roberto Berardi  
-**Student Number:** 25419094  
-**Program:** MSc Finance, HEC Lausanne - UNIL  
-**Course:** Advanced Programming - Fall 2025  
-**Date:** November 3, 2025
 
 ## Research Question
 
